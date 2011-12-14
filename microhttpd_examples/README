@@ -1,0 +1,7 @@
+This folder contains examples using libmicrohttpd. Users new to this project
+can use these to learn by example before jumping in the actual mpgc code.
+
+A tutorial can be found at:
+http://www.gnu.org/s/libmicrohttpd/tutorial.html
+This is also the tutorial where most of these examples came from (at the time
+of writing).
