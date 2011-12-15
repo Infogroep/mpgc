@@ -1,0 +1,5 @@
+This folder contains examples using popt. Users new to this project can use 
+these to learn by example before jumping in the actual mpgc code.
+
+The library is described in its manpage. This folder provides some hands-on
+code for the practical minded.
