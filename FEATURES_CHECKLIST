@@ -1,0 +1,11 @@
+This file contains a list of planned and completed features. If you think a
+certain feature would be cool to have, you can add it in the form:
+"TODO - <description>"
+On the other side of things, when someone finished a feature, we can mark it
+by replacing "TODO" with "DONE". If you implement a feature that's not on this
+list, you can just add it with the "DONE" prefix.
+
+TODO - configuration file support for mpgc-server
+TODO - configuration file support for mpgc-client
+TODO - when a client uploads a file that's already in the datadir, don't reupload
+TODO - mpgc-server serves a webpage as a client
