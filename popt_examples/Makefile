@@ -6,7 +6,7 @@ LDLIBS+=$(shell pkg-config --libs $(LIBS))
 
 CFLAGS+=-O0 -g
 
-$(PROGRAMS):
+all: $(PROGRAMS)
 
 clean:
 	rm -rf $(PROGRAMS)
