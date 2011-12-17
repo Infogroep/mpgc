@@ -1,0 +1,6 @@
+The tutorials folder contains information about the libraries and techniques
+used in this project. Be sure to check it out if you would like to contribute
+code, and are unfamiliar with some content in that folder.
+
+The src folder contains the actual sources of this project. At the time of
+writing, this is the mpgc server/daemon.
