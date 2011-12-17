@@ -1,0 +1,4 @@
+This folder contains information on how to write a daemon in linux using GCC.
+The original tutorial is located at
+http://www.netzmafia.de/skripten/unix/linux-daemon-howto.html
+and copyrighted by Devin Watson under the terms of the BSD license.
