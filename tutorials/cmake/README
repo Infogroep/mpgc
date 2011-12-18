@@ -1,0 +1,14 @@
+This tutorial for the CMake cross-platform build system is based on the
+tutorial on their website:
+http://www.cmake.org/cmake/help/cmake_tutorial.html
+
+The tutorial starts with a very basic example, and builds upon that. In this
+folder, every time cmake features are added, it is stored in a new folder:
+version_xx, where xx is a number. This way it is easier to see what actually
+changed by experimentation.
+
+The more practical way to use these examples is probably to create a folder,
+'build' for example, and run cmake in that directory. This way it is easier to
+remove the cmake generated files when you're done experimenting, and the other
+directories don't get cluttered with cmake files:
+$ mkdir build; cd build; cmake ../version_xx; make
