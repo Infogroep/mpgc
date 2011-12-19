@@ -25,7 +25,7 @@ CFLAGS+=-O0 -g
 
 LIBS=popt libmicrohttpd
 CFLAGS+=$(shell pkg-config --cflags $(LIBS))
-LDLIBS+=$(shell pkg-config --libs $(LIBS))
+LDLIBS+=$(shell pkg-config --libs $(LIBS) || echo "-lpopt -lmicrohttpd")
 
 all: $(PROGRAM)
 
