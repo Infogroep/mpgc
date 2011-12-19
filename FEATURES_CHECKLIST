@@ -9,3 +9,4 @@ TODO - configuration file support for mpgc-server
 TODO - configuration file support for mpgc-client
 TODO - when a client uploads a file that's already in the datadir, don't reupload
 TODO - mpgc-server serves a webpage as a client
+TODO - mpgc-server receives hash for files, to ensure data-consistency. Can be done using dup.
