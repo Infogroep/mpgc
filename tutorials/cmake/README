@@ -12,3 +12,9 @@ The more practical way to use these examples is probably to create a folder,
 remove the cmake generated files when you're done experimenting, and the other
 directories don't get cluttered with cmake files:
 $ mkdir build; cd build; cmake ../version_xx; make
+
+From version_04 on, there are options that can be changed. An easy way to do so
+is running cmake in interactive mode (-i):
+$ mkdir build; cd build; cmake -i ../version_xx; make
+Other options include running curses, qt, or other (semi-)graphical frontends
+to cmake. These will also show the different options that can be changed.
