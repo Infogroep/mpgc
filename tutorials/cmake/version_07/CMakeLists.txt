@@ -5,10 +5,6 @@ project (Tutorial)
 option (USE_MATHFUN
 	"Use tutorial provided math implementation" ON)
 
-# should we enable unit tests?
-option (ENABLE_TESTING
-	"Run built-in unit tests" ON)
-
 # The version number.
 set (Tutorial_VERSION_MAJOR 1)
 set (Tutorial_VERSION_MINOR 0)
