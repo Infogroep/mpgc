@@ -1,0 +1,715 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/cmake.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="Keywords" content="kitware, quality software process, software testing, cmake, consulting, cmake consulting" />
+
+<!-- #BeginEditable "doctitle" --> 
+<meta name="Description" content="CMake is a cross-platform, open-source build system. CMake is part of a family of tools designed to build, test and package software. CMake is used to control the software compilation process using simple platform and compiler independent configuration files. CMake generates native makefiles and workspaces that can be used in the compiler environment of your choice. " />
+
+<title>CMake - Cross Platform Make</title>
+<!-- #EndEditable --> 
+
+
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link href="../../kitware.css" rel="stylesheet" type="text/css" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript"></script>
+<link href="../../kitware.css" rel="stylesheet" type="text/css" />
+<script src="../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
+<!-- InstanceBeginEditable name="tabjs" -->
+<style type="text/css">
+<!--
+.style1 {
+	font-size: 11px
+}
+-->
+</style>
+<!-- InstanceEndEditable -->
+<!--[If lte IE 6]>
+<script type="text/javascript" src="../../js/jquery.pngFix.js"></script>
+<script type="text/javascript"> 
+    $(document).ready(function(){ 
+        $("div:not('#bannercmake'):not('div#rotator')").pngFix(); 
+    }); 
+</script> 
+<style>
+div#bannercmake{
+  background: url(../../img/bannerorg.jpg) no-repeat;
+  position:relative;
+  left:12px;
+}
+div#nav{
+  right: 27px;
+}
+div#search{
+  left: 635px;
+}
+</style>
+<![endif]-->
+<script type="text/javascript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</head>
+<body>
+
+<div id="bg">
+<div id="frame">
+   <div id="bannercmake">
+     <div id="search">
+<form method="post" action = "http://www.kitware.com/cgi-bin/htsearch">
+<input name="words" type="text" class="searchfield"
+onfocus="this.value=''" value="Search" size="25"
+  >
+
+</form>
+
+
+
+<!--
+                <form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+Format: <select name="format">
+<option value="builtin-long">Long
+<option value="builtin-short">Short
+</select>
+Sort by: <select name="sort">
+<option value="score">Score
+<option value="time">Time
+<option value="title">Title
+<option value="revscore">Reverse Score
+<option value="revtime">Reverse Time
+<option value="revtitle">Reverse Title
+</select>
+</font>
+<input type="hidden" name="config" value="htdig_vtk">
+<input type="hidden" name="restrict" value="">
+<input type="hidden" name="exclude" value="">
+<br>
+Search:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+</form>
+-->
+</div>
+    <div id="nav">      
+      <ul id="MenuBar1" class="MenuBarHorizontal">
+        <li><a href="../project/project.html" class="MenuBarItemSubmenu">PROJECT</a>
+          <ul>
+            <li><a href="../project/about.html">About</a></li>
+            <li><a href="../project/parti.html">Participants</a></li>
+            <li><a href="../project/license.html">License</a></li>
+            <li><a href="../project/publications.html">Publications</a></li>
+            <li><a href="../project/statistics.html">Statistics</a></li>
+            <li><a href="../project/getinvolved.html">Get Involved</a></li>
+            <li><a href="../project/press_kit.html">Press Kit</a></li>
+            <li><a href="../project/success.html">Success Stories</a></li>
+            <li><a href="../project/contactus.html">Contact Us</a></li>
+            <li><a href="http://www.kitware.com/news/home/browse/CMake">News</a></li>
+          </ul>
+       </li>
+       <li><a href="../resources/resources.html" class="MenuBarItemSubmenu">RESOURCES</a>
+          <ul>
+            <li><a href="../resources/software.html">Download</a></li>
+                        <li><a href="http://www.cdash.org/CDash/index.php?project=CMake">Dashboard&nbsp;<img src="../../img/arrow2.png" alt="" width="10" height="11" border="0" /></a></li>
+                         <li><a href="../resources/webinars.html">Webinars</a></li>
+            <li><a href="../resources/relatedsoftware.html">Related Software </a></li>
+            <li><a href="http://public.kitware.com/Bug/my_view_page.php">Bug Tracker&nbsp;<img src="../../img/arrow2.png" alt="" width="10" height="11" border="0" /></a></li>
+         </ul>
+      </li>
+        <li><a href="http://www.cmake.org/cmake/help/help.html" class="MenuBarItemSubmenu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HELP</a>
+          <ul>
+            
+            <li><a href="http://www.cmake.org/cmake/help/book.html">Books</a></li>
+            <li><a href="http://www.cmake.org/cmake/help/documentation.html">Documentation</a></li>
+            <li><a href="http://www.cmake.org/Wiki/CMake_FAQ">FAQ&nbsp;<img src="img/arrow2.png" alt="" width="10" height="11" border="0" /></a></li>
+            <li><a href="http://www.cmake.org/Wiki/CMake">Wiki&nbsp;<img src="img/arrow2.png" alt="" width="10" height="11" border="0" /></a></li>
+            <li><a href="http://www.cmake.org/cmake/help/mailing.html">Mailing Lists<img src="img/arrow2.png" alt="" width="10" height="11" border="0" /></a></li>
+            <li><a href="http://kitware.com/products/support.html">Support&nbsp;</a></li>
+            <li><a href="http://kitware.com/products/consulting.html">Consulting&nbsp;</a></li>
+            <li><a href="http://kitware.com/products/protraining3.html">Training&nbsp;</a></li>  
+          </ul>
+        </li>
+        <li><a href="http://www.kitware.com/opensource/opensource.html" class="MenuBarItemSubmenu">OPEN SOURCE</a>
+          <ul style="width:104px">
+            <li style="width:104px"><a href="http://www.vtk.org" title="Offsite Link">VTK &nbsp;<img src="../../img/arrow2.png" alt="" width="10" height="11" border="0" /></a></li>
+            <li style="width:104px"><a href="http://www.itk.org" title="Offsite Link">ITK &nbsp;<img src="../../img/arrow2.png" alt="" width="10" height="11" border="0" /></a></li>
+            <li style="width:104px"><a href="http://www.cmake.org" title="Offsite Link">CMake &nbsp;<img src="../../img/arrow2.png" alt="" width="10" height="11" border="0" /></a></li>
+              <li style="width:104px"><a href="http://www.kiwiviewer.org" title="Offsite Link">KiwiViewer &nbsp;<img src="img/arrow2.png" alt="" width="10" height="11" border="0" /></a></li>
+            <li style="width:104px"><a href="http://www.cdash.org" title="Offsite Link">CDash &nbsp;<img src="../../img/arrow2.png" alt="" width="10" height="11" border="0" /></a></li>
+            <li style="width:104px"><a href="http://www.paraview.org" title="Offsite Link">ParaView &nbsp;<img src="../../img/arrow2.png" alt="" width="10" height="11" border="0" /></a></li>
+            <li style="width:104px"><a href="http://www.midasplatform.org/" title="Offsite Link">MIDAS &nbsp;<img src="../../img/arrow2.png" alt="" width="10" height="11" border="0" /></a></li>
+           
+             <li style="width:104px"><a href="http://www.igstk.org" title="Offsite Link">IGSTK &nbsp;<img src="../../img/arrow2.png" alt="" width="10" height="11" border="0" /></a></li>
+             <li style="width:104px"><a href="http://www.batchmake.org" title="Offsite Link">BatchMake &nbsp;<img src="../../img/arrow2.png" alt="" width="10" height="11" border="0" /></a></li>
+           </ul>
+          </li>
+      </ul>
+      </div>
+    <div id="cmakelogo"><a href="http://www.cmake.org"><img src="../../opensourcelogos/cmake75.png" title="CMake Home" width="252" height="100" border="0" id="cmake" onmouseover="MM_swapImage('cmake','','../../opensourcelogos/cmake100.png',1)" onmouseout="MM_swapImgRestore()" /></a></div>
+    <div id="logo2"><a href="http://www.kitware.com"><img src="../../img/logo2out.png" title="Kitware Home" width="75" height="35" border="0" id="kitsmall" onmouseover="MM_swapImage('kitsmall','','../../img/logo2over.png',1)" onmouseout="MM_swapImgRestore()" /></a></div>
+  </div>
+  <div id="ContentBg">
+    <div id="Content"><!-- InstanceBeginEditable name="pagecontent" -->
+      <div id="ContentTxtProdWide"><div id="titletext">CMake Tutorial</div><br />
+              <div id="ContentTabTOC"> <a href="#s1">Step 1</a> | <a href="#s2">Step 2</a> | <a href="#s3">Step 3</a> | <a href="#s4">Step 4</a> | <a href="#s5">Step 5</a> | <a href="#s6">Step 6</a> | <a href="#s7">Step 7</a></div>
+
+        <p><br />
+          Below is a step-by-step tutorial  covering common build system issues that CMake helps to address. Many of these topics have been introduced in <a href="http://www.kitware.com/products/books/CMakeBook.html"><em>Mastering CMake</em></a> as separate issues but seeing how they all work together in an example project can be very helpful. This tutorial can be found in the <a href="http://public.kitware.com/cgi-bin/viewcvs.cgi/Tests/Tutorial/?root=CMake">Tests/Tutorial</a> directory of the CMake source code tree. Each step has its own subdirectory containing a complete copy of the tutorial for that step.</p>
+ 
+        <a name="s1" id="s1"></a><div id="titletext">A Basic Starting Point (Step 1)</div>
+        <p>
+        The most basic project is an executable built from source code files. For simple projects a two line CMakeLists file is all that is required. This will be the starting point for our tutorial. The CMakeLists file looks like:
+ 
+<div id="textboxstyle">
+  <pre class="style1">cmake_minimum_required (VERSION 2.6)
+project (Tutorial)
+add_executable(Tutorial tutorial.cxx)
+</pre>
+</div>
+ 
+<p>Note that this example uses lower case commands in the CMakeLists file. Upper, lower, and mixed case commands are supported by CMake. The source code for tutorial.cxx will compute the square root of a number and the first version of it is very simple, as follows:</p>
+ 
+<div id="textboxstyle"><pre class="style1">// A simple program that computes the square root of a number
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;math.h&gt;
+int main (int argc, char *argv[])
+{
+  if (argc &lt; 2)
+    {
+    fprintf(stdout,"Usage: %s number\n",argv[0]);
+    return 1;
+    }
+  double inputValue = atof(argv[1]);
+  double outputValue = sqrt(inputValue);
+  fprintf(stdout,"The square root of %g is %g\n",
+          inputValue, outputValue);
+  return 0;
+}
+</pre>
+</div>
+ 
+<h3>Adding a Version Number and Configured Header File</h3>
+ 
+<p>The first feature we will add is to provide our executable and project with a version number. While you can do this exclusively in the source code, doing it in the CMakeLists file provides more flexibility. To add a version number we modify the CMakeLists file as follows:</p>
+ 
+<div class="style1" id="textboxstyle"><pre class="style1">cmake_minimum_required (VERSION 2.6)
+project (Tutorial)
+# The version number.
+set (Tutorial_VERSION_MAJOR 1)
+set (Tutorial_VERSION_MINOR 0)
+ 
+# configure a header file to pass some of the CMake settings
+# to the source code
+configure_file (
+  "${PROJECT_SOURCE_DIR}/TutorialConfig.h.in"
+  "${PROJECT_BINARY_DIR}/TutorialConfig.h"
+  )
+ 
+# add the binary tree to the search path for include files
+# so that we will find TutorialConfig.h
+include_directories("${PROJECT_BINARY_DIR}")
+ 
+# add the executable
+add_executable(Tutorial tutorial.cxx)</pre>
+</div>
+ 
+<p>Since the configured file will be written into the binary tree we must add that directory to the list of paths to search for include files. We then create a TutorialConfig.h.in file in the source tree with the following contents:</p>
+ 
+<div id="textboxstyle"><pre class="style1">// the configured options and settings for Tutorial
+#define Tutorial_VERSION_MAJOR @Tutorial_VERSION_MAJOR@
+#define Tutorial_VERSION_MINOR @Tutorial_VERSION_MINOR@
+</pre>
+</div>
+ 
+<p>When CMake configures this header file the values for @Tutorial_VERSION_MAJOR@ and @Tutorial_VERSION_MINOR@ will be replaced by the values from the CMakeLists file. Next we modify tutorial.cxx to include the configured header file and to make use of the version numbers. The resulting source code is listed below.</p>
+ 
+<div id="textboxstyle"><pre class="style1">// A simple program that computes the square root of a number
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;math.h&gt;
+#include "TutorialConfig.h"
+ 
+int main (int argc, char *argv[])
+{
+  if (argc &lt; 2)
+    {
+    fprintf(stdout,"%s Version %d.%d\n",
+            argv[0],
+            Tutorial_VERSION_MAJOR,
+            Tutorial_VERSION_MINOR);
+    fprintf(stdout,"Usage: %s number\n",argv[0]);
+    return 1;
+    }
+  double inputValue = atof(argv[1]);
+  double outputValue = sqrt(inputValue);
+  fprintf(stdout,"The square root of %g is %g\n",
+          inputValue, outputValue);
+  return 0;
+}
+</pre>
+</div>
+ 
+<p>The main changes are the inclusion of the TutorialConfig.h header file and printing out a version number as part of the usage message.</p>
+ 
+<a name="s2" id="s2"></a><div id="titletext">Adding a Library (Step 2)</div> 
+<p>
+Now we will add a library to our project. This library will contain our own implementation for computing the square root of a number. The executable can then use this library instead of the standard square root function provided by the compiler. For this tutorial we will put the library into a subdirectory called MathFunctions. It will have the following one line CMakeLists file:
+ 
+<div id="textboxstyle"><pre class="style1">add_library(MathFunctions mysqrt.cxx)</pre>
+</div>
+ 
+<p>The source file mysqrt.cxx has one function called mysqrt that provides similar functionality to the compiler’s sqrt function. To make use of the new library we add an add_subdirectory call in the top level CMakeLists file so that the library will get built. We also add another include directory so that the MathFunctions/mysqrt.h header file can be found for the function prototype. The last change is to add the new library to the executable. The last few lines of the top level CMakeLists file now look like:</p>
+ 
+<div id="textboxstyle"><pre class="style1">include_directories ("${PROJECT_SOURCE_DIR}/MathFunctions")
+add_subdirectory (MathFunctions) 
+ 
+# add the executable
+add_executable (Tutorial tutorial.cxx)
+target_link_libraries (Tutorial MathFunctions)
+</pre>
+</div>
+ 
+<p>Now let us consider making the MathFunctions library optional. In this tutorial there really isn’t any reason to do so, but with larger libraries or libraries that rely on third party code you might want to. The first step is to add an option to the top level CMakeLists file.</p>
+ 
+<div id="textboxstyle"><pre class="style1"># should we use our own math functions?
+option (USE_MYMATH 
+        "Use tutorial provided math implementation" ON) 
+</pre>
+</div>
+ 
+<p>This will show up in the CMake GUI with a default value of ON that the user can change as desired. This setting will be stored in the cache so that the user does not need to keep setting it each time they run CMake on this project. The next change is to make the build and linking of the MathFunctions library conditional. To do this we change the end of the top level CMakeLists file to look like the following:</p>
+ 
+<div id="textboxstyle"><pre class="style1"># add the MathFunctions library?
+#
+if (USE_MYMATH)
+  include_directories ("${PROJECT_SOURCE_DIR}/MathFunctions")
+  add_subdirectory (MathFunctions)
+  set (EXTRA_LIBS ${EXTRA_LIBS} MathFunctions)
+endif (USE_MYMATH)
+ 
+# add the executable
+add_executable (Tutorial tutorial.cxx)
+target_link_libraries (Tutorial  ${EXTRA_LIBS})
+</pre>
+</div>
+ 
+<p>This uses the setting of USE_MYMATH to determine if the MathFunctions should be compiled and used. Note the use of a variable (EXTRA_LIBS in this case) to collect up any optional libraries to later be linked into the executable. This is a common approach used to keep larger projects with many optional components clean. The corresponding changes to the source code are fairly straight forward and leave us with:</p>
+ 
+<div id="textboxstyle"><pre class="style1">// A simple program that computes the square root of a number
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;math.h&gt;
+#include "TutorialConfig.h"
+#ifdef USE_MYMATH
+#include "MathFunctions.h"
+#endif
+ 
+int main (int argc, char *argv[])
+{
+  if (argc &lt; 2)
+    {
+    fprintf(stdout,"%s Version %d.%d\n", argv[0],
+            Tutorial_VERSION_MAJOR,
+            Tutorial_VERSION_MINOR);
+    fprintf(stdout,"Usage: %s number\n",argv[0]);
+    return 1;
+    }
+ 
+  double inputValue = atof(argv[1]);
+ 
+#ifdef USE_MYMATH
+  double outputValue = mysqrt(inputValue);
+#else
+  double outputValue = sqrt(inputValue);
+#endif
+ 
+  fprintf(stdout,"The square root of %g is %g\n",
+          inputValue, outputValue);
+  return 0;
+}
+</pre>
+</div>
+ 
+<p>In the source code we make use of USE_MYMATH as well. This is provided from CMake to the source code through the TutorialConfig.h.in configured file by adding the following line to it:</p>
+ 
+<div id="textboxstyle"><pre class="style1">#cmakedefine USE_MYMATH</pre>
+</div>
+ 
+<br />
+<a name="s3" id="s3"></a><div id="titletext">Installing and Testing (Step 3)</div>
+<p>
+For the next step we will add install rules and testing support to our project. The install rules are fairly straight forward. For the MathFunctions library we setup the library and the header file to be installed by adding the following two lines to MathFunctions’ CMakeLists file:</br>
+ 
+<div id="textboxstyle"><pre class="style1">install (TARGETS MathFunctions DESTINATION bin)
+install (FILES MathFunctions.h DESTINATION include)
+</pre>
+</div>
+ 
+<p>For the application the following lines are added to the top level CMakeLists file to install the executable and the configured header file:</p>
+ 
+<div id="textboxstyle"><pre class="style1"># add the install targets
+install (TARGETS Tutorial DESTINATION bin)
+install (FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h"        
+         DESTINATION include)
+</pre>
+</div>
+ 
+<p>That is all there is to it. At this point you should be able to build the tutorial, then type make install (or build the INSTALL target from an IDE) and it will install the appropriate header files, libraries, and executables. The CMake variable CMAKE_INSTALL_PREFIX is used to determine the root of where the files will be installed. Adding testing is also a fairly straight forward process. At the end of the top level CMakeLists file we can add a number of basic tests to verify that the application is working correctly. </p>
+ 
+<div id="textboxstyle"><pre class="style1"># does the application run
+add_test (TutorialRuns Tutorial 25)
+ 
+# does it sqrt of 25
+add_test (TutorialComp25 Tutorial 25)
+ 
+set_tests_properties (TutorialComp25 
+  PROPERTIES PASS_REGULAR_EXPRESSION "25 is 5")
+ 
+# does it handle negative numbers
+add_test (TutorialNegative Tutorial -25)
+set_tests_properties (TutorialNegative
+  PROPERTIES PASS_REGULAR_EXPRESSION "-25 is 0")
+ 
+# does it handle small numbers
+add_test (TutorialSmall Tutorial 0.0001)
+set_tests_properties (TutorialSmall
+  PROPERTIES PASS_REGULAR_EXPRESSION "0.0001 is 0.01")
+ 
+# does the usage message work?
+add_test (TutorialUsage Tutorial)
+set_tests_properties (TutorialUsage
+  PROPERTIES 
+  PASS_REGULAR_EXPRESSION "Usage:.*number")
+</pre>
+</div>
+ 
+<p>The first test simply verifies that the application runs, does not segfault or otherwise crash, and has a zero return value. This is the basic form of a CTest test. The next few tests all make use of the PASS_REGULAR_EXPRESSION test property to verify that the output of the test contains certain strings. In this case verifying that the computed square root is what it should be and that the usage message is printed when an incorrect number of arguments are provided. If you wanted to add a lot of tests to test different input values you might consider creating a macro like the following:</p>
+ 
+<div id="textboxstyle"><pre class="style1">#define a macro to simplify adding tests, then use it
+macro (do_test arg result)
+  add_test (TutorialComp${arg} Tutorial ${arg})
+  set_tests_properties (TutorialComp${arg}
+    PROPERTIES PASS_REGULAR_EXPRESSION ${result})
+endmacro (do_test)
+ 
+# do a bunch of result based tests
+do_test (25 "25 is 5")
+do_test (-25 "-25 is 0")
+</pre>
+</div>
+ 
+<p>For each invocation of do_test, another test is added to the project with a name, input, and results based on the passed arguments.</p>
+ 
+<a name="s4" id="s4"></a><div id="titletext">Adding System Introspection (Step 4)</div>
+<p>
+Next let us consider adding some code to our project that depends on features the target platform may not have. For this example we will add some code that depends on whether or not the target platform has the log and exp functions. Of course almost every platform has these functions but for this tutorial assume that they are less common. If the platform has log then we will use that to compute the square root in the mysqrt function. We first test for the availability of these functions using the CheckFunctionExists.cmake macro in the top level CMakeLists file as follows:
+ 
+<div id="textboxstyle"><pre class="style1"># does this system provide the log and exp functions?
+include (CheckFunctionExists.cmake)
+check_function_exists (log HAVE_LOG)
+check_function_exists (exp HAVE_EXP)
+</pre>
+</div>
+ 
+<p>Next we modify the TutorialConfig.h.in to define those values if CMake found them on the platform as follows:</p>
+ 
+<div id="textboxstyle"><pre class="style1">// does the platform provide exp and log functions?
+#cmakedefine HAVE_LOG
+#cmakedefine HAVE_EXP
+</pre>
+</div>
+ 
+<p>It is important that the tests for log and exp are done before the configure_file command for TutorialConfig.h. The configure_file command immediately configures the file using the current settings in CMake. Finally in the mysqrt function we can provide an alternate implementation based on log and exp if they are available on the system using the following code:</p>
+ 
+<div id="textboxstyle"><pre class="style1">// if we have both log and exp then use them
+#if defined (HAVE_LOG) && defined (HAVE_EXP)
+  result = exp(log(x)*0.5);
+#else // otherwise use an iterative approach
+  . . .
+</pre>
+</div>
+ 
+<br />
+<a name="s5" id="s5"></a><div id="titletext">Adding a Generated File and Generator (Step 5)</div>
+<p>In this section we will show how you can add a generated source file into the build process of an application. For this example we will create a table of precomputed square roots as part of the build process, and then compile that table into our application. To accomplish this we first need a program that will generate the table. In the MathFunctions subdirectory a new source file named MakeTable.cxx will do just that.
+ 
+<div id="textboxstyle"><pre class="style1">// A simple program that builds a sqrt table 
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;math.h&gt;
+ 
+int main (int argc, char *argv[])
+{
+  int i;
+  double result;
+ 
+  // make sure we have enough arguments
+  if (argc &lt; 2)
+    {
+    return 1;
+    }
+  
+  // open the output file
+  FILE *fout = fopen(argv[1],"w");
+  if (!fout)
+    {
+    return 1;
+    }
+  
+  // create a source file with a table of square roots
+  fprintf(fout,"double sqrtTable[] = {\n");
+  for (i = 0; i < 10; ++i)
+    {
+    result = sqrt(static_cast&lt;double&gt;(i));
+    fprintf(fout,"%g,\n",result);
+    }
+ 
+  // close the table with a zero
+  fprintf(fout,"0};\n");
+  fclose(fout);
+  return 0;
+}
+</pre>
+</div>
+ 
+<p>Note that the table is produced as valid C++ code and that the name of the file to write the output to is passed in as an argument. The next step is to add the appropriate commands to MathFunctions’ CMakeLists file to build the MakeTable executable, and then run it as part of the build process. A few commands are needed to accomplish this, as shown below. </p>
+ 
+<div id="textboxstyle"><pre class="style1"># first we add the executable that generates the table
+add_executable(MakeTable MakeTable.cxx)
+ 
+# add the command to generate the source code
+add_custom_command (
+  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/Table.h
+  COMMAND MakeTable ${CMAKE_CURRENT_BINARY_DIR}/Table.h
+  DEPENDS MakeTable
+  )
+ 
+# add the binary tree directory to the search path for 
+# include files
+include_directories( ${CMAKE_CURRENT_BINARY_DIR} )
+ 
+# add the main library
+add_library(MathFunctions mysqrt.cxx ${CMAKE_CURRENT_BINARY_DIR}/Table.h  )
+</pre>
+</div>
+ 
+<p>First the executable for MakeTable is added as any other executable would be added. Then we add a custom command that specifies how to produce Table.h by running MakeTable. Next we have to let CMake know that mysqrt.cxx depends on the generated file Table.h. This is done by adding the generated Table.h to the list of sources for the library MathFunctions. We also have to add the current binary directory to the list of include directories so that Table.h can be found and included by mysqrt.cxx.</p>
+ 
+<p>When this project is built it will first build the MakeTable executable. It will then run MakeTable to produce Table.h. Finally, it will compile mysqrt.cxx which includes Table.h to produce the MathFunctions library.</p>
+ 
+<p>At this point the top level CMakeLists file with all the features we have added looks like the following:</p>
+ 
+<div id="textboxstyle"><pre class="style1">cmake_minimum_required (VERSION 2.6)
+project (Tutorial)
+ 
+# The version number.
+set (Tutorial_VERSION_MAJOR 1)
+set (Tutorial_VERSION_MINOR 0)
+ 
+# does this system provide the log and exp functions?
+include (${CMAKE_ROOT}/Modules/CheckFunctionExists.cmake)
+ 
+check_function_exists (log HAVE_LOG)
+check_function_exists (exp HAVE_EXP)
+ 
+# should we use our own math functions
+option(USE_MYMATH 
+  "Use tutorial provided math implementation" ON)
+ 
+# configure a header file to pass some of the CMake settings
+# to the source code
+configure_file (
+  "${PROJECT_SOURCE_DIR}/TutorialConfig.h.in"
+  "${PROJECT_BINARY_DIR}/TutorialConfig.h"
+  )
+ 
+# add the binary tree to the search path for include files
+# so that we will find TutorialConfig.h
+include_directories ("${PROJECT_BINARY_DIR}")
+ 
+# add the MathFunctions library?
+if (USE_MYMATH)
+  include_directories ("${PROJECT_SOURCE_DIR}/MathFunctions")
+  add_subdirectory (MathFunctions)
+  set (EXTRA_LIBS ${EXTRA_LIBS} MathFunctions)
+endif (USE_MYMATH)
+ 
+# add the executable
+add_executable (Tutorial tutorial.cxx)
+target_link_libraries (Tutorial  ${EXTRA_LIBS})
+ 
+# add the install targets
+install (TARGETS Tutorial DESTINATION bin)
+install (FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h"        
+         DESTINATION include)
+ 
+# does the application run
+add_test (TutorialRuns Tutorial 25)
+ 
+# does the usage message work?
+add_test (TutorialUsage Tutorial)
+set_tests_properties (TutorialUsage
+  PROPERTIES 
+  PASS_REGULAR_EXPRESSION "Usage:.*number"
+  )
+ 
+ 
+#define a macro to simplify adding tests
+macro (do_test arg result)
+  add_test (TutorialComp${arg} Tutorial ${arg})
+  set_tests_properties (TutorialComp${arg}
+    PROPERTIES PASS_REGULAR_EXPRESSION ${result}
+    )
+endmacro (do_test)
+ 
+# do a bunch of result based tests
+do_test (4 "4 is 2")
+do_test (9 "9 is 3")
+do_test (5 "5 is 2.236")
+do_test (7 "7 is 2.645")
+do_test (25 "25 is 5")
+do_test (-25 "-25 is 0")
+do_test (0.0001 "0.0001 is 0.01")
+</pre>
+</div>
+ 
+<p>TutorialConfig.h looks like:</p>
+ 
+<div id="textboxstyle"><pre class="style1">// the configured options and settings for Tutorial
+#define Tutorial_VERSION_MAJOR @Tutorial_VERSION_MAJOR@
+#define Tutorial_VERSION_MINOR @Tutorial_VERSION_MINOR@
+#cmakedefine USE_MYMATH
+ 
+// does the platform provide exp and log functions?
+#cmakedefine HAVE_LOG
+#cmakedefine HAVE_EXP
+</pre>
+</div>
+ 
+<p>And the CMakeLists file for MathFunctions looks like:</p>
+ 
+<div id="textboxstyle"><pre class="style1"># first we add the executable that generates the table
+add_executable(MakeTable MakeTable.cxx)
+# add the command to generate the source code
+add_custom_command (
+  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/Table.h
+  DEPENDS MakeTable
+  COMMAND MakeTable ${CMAKE_CURRENT_BINARY_DIR}/Table.h
+  )
+# add the binary tree directory to the search path 
+# for include files
+include_directories( ${CMAKE_CURRENT_BINARY_DIR} )
+ 
+# add the main library
+add_library(MathFunctions mysqrt.cxx ${CMAKE_CURRENT_BINARY_DIR}/Table.h)
+ 
+install (TARGETS MathFunctions DESTINATION bin)
+install (FILES MathFunctions.h DESTINATION include)
+</pre>
+</div>
+ 
+<br />
+<a name="s6" id="s6"></a><div id="titletext">Building an Installer (Step 6)</div>
+<p>
+Next suppose that we want to distribute our project to other people so that they can use it. We want to provide both binary and source distributions on a variety of platforms. This is a little different from the instal we did previously in section Installing and Testing (Step 3), where we were installing the binaries that we had built from the source code. In this example we will be building installation packages that support binary installations and package management features as found in cygwin, debian, RPMs etc. To accomplish this we will use CPack to create platform specific installers as described in Chapter Packaging with CPack. Specifically we need to add a few lines to the bottom of our toplevel CMakeLists.txt file.
+<div class="style1" id="textboxstyle"><pre class="style1"># build a CPack driven installer package
+include (InstallRequiredSystemLibraries)
+set (CPACK_RESOURCE_FILE_LICENSE  
+     "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
+set (CPACK_PACKAGE_VERSION_MAJOR "${Tutorial_VERSION_MAJOR}")
+set (CPACK_PACKAGE_VERSION_MINOR "${Tutorial_VERSION_MINOR}")
+include (CPack)</pre>
+</div>
+ 
+<p>That is all there is to it. We start by including InstallRequiredSystemLibraries. This module will include any runtime libraries that are needed by the project for the current platform. Next we set some CPack variables to where we have stored the license and version information for this project. The version information makes use of the variables we set earlier in this tutorial. Finally we include the CPack module which will use these variables and some other properties of the system you are on to setup an installer.</p>
+ 
+<p>The next step is to build the project in the usual manner and then run CPack on it. To build a binary distribution you would run:</p>
+ 
+<div id="textboxstyle"><pre class="style1">cpack -C CPackConfig.cmake</pre>
+</div>
+ 
+<p>To create a source distribution you would type</p>
+ 
+<div id="textboxstyle"><pre class="style1">cpack -C CPackSourceConfig.cmake</pre>
+</div>
+ 
+<br />
+<a name="s7" id="s7"></a><div id="titletext">Adding Support for a Dashboard (Step 7)</div>
+<p>
+Adding support for submitting our test results to a dashboard is very easy. We already defined a number of tests for our project in the earlier steps of this tutorial. We just have to run those tests and submit them to a dashboard. To include support for dashboards we include the CTest module in our toplevel CMakeLists file.
+<div id="textboxstyle"><pre class="style1"># enable dashboard scripting
+include (CTest)
+</pre>
+</div>
+ 
+<p>We also create a CTestConfig.cmake file where we can specify the name of this project for the dashboard.</p>
+ 
+<div id="textboxstyle"><pre class="style1">set (CTEST_PROJECT_NAME "Tutorial")
+</pre>
+</div>
+ 
+<p>CTest will read in this file when it runs. To create a simple dashboard you can run CMake on your project, change directory to the binary tree, and then run ctest –D Experimental. The results of your dashboard will be uploaded to Kitware's public dashboard <a href="http://www.cdash.org/CDash/index.php?project=PublicDashboard">here</a>.</p>
+
+      </div>
+      <div align="center"><br />
+          <!-- tabbed panel begins here --><br />
+      </div> <br class="clear" /></br>
+    <!-- InstanceEndEditable --></div>
+  </div>
+ 
+  <div id="footer"><br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <a rel="license" href="http://creativecommons.org/licenses/by-nd/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nd/3.0/80x15.png" /></a> This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nd/3.0/">Creative Commons Attribution-NoDerivs 3.0 Unported License</a>. Additional information on this license can be found <a href="http://www.kitware.com/company/cclicense.html">here</a>.<br /></div>
+</div>
+</div>
+<!-- InstanceBeginEditable name="tabjs2" -->
+<script type="text/javascript">
+<!--
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"../SpryAssets/SpryMenuBarDownHover.gif", imgRight:"../SpryAssets/SpryMenuBarRightHover.gif"});
+//-->
+</script>
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-6042509-4");
+pageTracker._trackPageview();
+</script>
+</body>
+<!-- InstanceEnd --></html>

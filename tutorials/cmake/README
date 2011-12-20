@@ -1,6 +1,7 @@
 This tutorial for the CMake cross-platform build system is based on the
 tutorial on their website:
 http://www.cmake.org/cmake/help/cmake_tutorial.html
+A copy (20 dec 2011) resides in this directory.
 
 The tutorial starts with a very basic example, and builds upon that. In this
 folder, every time cmake features are added, it is stored in a new folder:
