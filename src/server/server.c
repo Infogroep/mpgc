@@ -33,7 +33,7 @@ static int answer_to_connection(
 		size_t *upload_data_size,
 		void **con_cls)
 {
-	const char *page = "<html><body>Hello, browser! mpgcd reporting!</browser></html>";
+	const char *page = "<html><body>Hello, browser! mpgcd reporting!</body></html>";
 	struct MHD_Response *response;
 	int ret;
 
