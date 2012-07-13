@@ -14,7 +14,7 @@ if action == "get":
 	print(element.get_volume())
 elif action == "set":
 	element = alsamixer.Element(mixer, "Master")
-	element.set_volume(int(sys.argv[1]))
+	element.set_volume(int(sys.argv[2]))
 else:
 	sys.stderr.write("Onbekend commando (Thierryyyy, hooooooo!)")
 	exit(1)
