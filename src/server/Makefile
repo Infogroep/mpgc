@@ -15,13 +15,19 @@
 # You should have received a copy of the GNU General Public License
 # along with mpgc.  If not, see <http://www.gnu.org/licenses/>.
 #
+DEVELOPMENT=1
+ifeq (${DEVELOPMENT},1)
+CFLAGS:=-O0 -g -Wall -Wextra -pedantic $(CFLAGS)
+else
+CFLAGS:=-O2 $(CFLAGS)
+endif
 
 PROGRAM=mpgcd
 
-SOURCES=main.c options.c server.c
+SOURCES=$(PROGRAM:%=%.c) options.c server.c
 OBJECTS=$(SOURCES:%.c=%.o)
 
-CFLAGS+=-O0 -g -D_POSIX_C_SOURCE=200809L
+CFLAGS+=-std=c11 -D_POSIX_C_SOURCE=200809L
 
 LIBS=popt libmicrohttpd
 CFLAGS+=$(shell pkg-config --cflags $(LIBS))
@@ -30,10 +36,6 @@ LDLIBS+=$(shell pkg-config --libs $(LIBS) || echo "-lpopt -lmicrohttpd")
 all: $(PROGRAM)
 
 $(PROGRAM): $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) $(LDLIBS) -o $@
-
-%.o:%.c
-	$(CC) -c $< -o $@
 
 clean:
 	rm -rf $(PROGRAM) $(OBJECTS)

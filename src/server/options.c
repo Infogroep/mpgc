@@ -26,12 +26,11 @@ struct mpgc_config optionParse(int argc, const char *argv[]) {
 	int port = 8080;
 
 	poptContext context;
-	char currentOption;
 
 	struct poptOption optionsTable[] = {
 		{ "port", 'p', POPT_ARG_INT, &port, 0, "server port", NULL },
-		POPT_AUTOHELP
-		{ NULL, 0, 0, NULL, 0 }
+
+		POPT_AUTOHELP POPT_TABLEEND
 	};
 
 	context = poptGetContext(*argv, argc, argv, optionsTable, 0);
