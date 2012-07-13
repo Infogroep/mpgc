@@ -21,7 +21,7 @@ PROGRAM=mpgcd
 SOURCES=main.c options.c server.c
 OBJECTS=$(SOURCES:%.c=%.o)
 
-CFLAGS+=-O0 -g
+CFLAGS+=-O0 -g -D_POSIX_C_SOURCE=200809L
 
 LIBS=popt libmicrohttpd
 CFLAGS+=$(shell pkg-config --cflags $(LIBS))
