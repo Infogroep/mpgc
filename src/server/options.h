@@ -22,6 +22,8 @@
 
 struct mpgc_config {
 	int port;
+	int daemon;
+	int kill;
 };
 
 struct mpgc_config optionParse(int argc, const char *argv[]);

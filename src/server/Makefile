@@ -18,7 +18,7 @@
 
 PROGRAM=mpgcd
 
-SOURCES=main.c options.c server.c
+SOURCES=main.c options.c server.c daemon.c
 OBJECTS=$(SOURCES:%.c=%.o)
 
 CFLAGS+=-O0 -g

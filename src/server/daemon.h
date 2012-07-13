@@ -1,4 +1,4 @@
-/* Copyright 2011 Robrecht Dewaele
+/* Copyright 2012 Joris Vandermeersch
  *
  * This file is part of mpgc.
  *
@@ -16,33 +16,18 @@
  * along with mpgc.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "options.h"
-#include "daemon.h"
+#pragma once
+
 #include "server.h"
 
-#include <stdio.h>
+#define DAEMON_NAME "mpgc"
 
-int main(int argc, const char *argv[]) {
-	struct mpgc_config config;
-	struct mpgc_server * server;
+void daemon_shutdown();
+void mpgc_shutdown();
+void signal_handler(int sig);
+void daemonize(char *rundir, char *pidfile);
 
-	config = optionParse(argc, argv);
-/*  printf("daemon: %s\n", config.daemon == 0 ? "false" : "true");*/
+int pidFilehandle;
+struct mpgc_server * server;
 
-	if (config.daemon != 0) {
-		printf("port: %d\n", config.port);
-		start_daemon(config);
-	} else if (config.kill != 0) {
-		printf("killing daemon...\n");
-		mpgc_shutdown();
-	} else {
-		printf("port: %d\n", config.port);
-		server = start_server(config.port);
 
-		// don't return immediately
-		getchar();
-
-		stop_server(server);
-	}
-	return 0;
-}

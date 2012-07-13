@@ -24,12 +24,16 @@
 
 struct mpgc_config optionParse(int argc, const char *argv[]) {
 	int port = 8080;
+	int daemon = 0;
+	int kill = 0;
 
 	poptContext context;
 	char currentOption;
 
 	struct poptOption optionsTable[] = {
 		{ "port", 'p', POPT_ARG_INT, &port, 0, "server port", NULL },
+		{ "daemon", 'd', POPT_ARG_NONE, &daemon, 0, "daemonize the server", NULL },
+		{ "kill", 'k', POPT_ARG_NONE, &kill, 0, "kill the daemon", NULL },
 		POPT_AUTOHELP
 		{ NULL, 0, 0, NULL, 0 }
 	};
@@ -41,5 +45,5 @@ struct mpgc_config optionParse(int argc, const char *argv[]) {
 
 	poptFreeContext(context);
 
-	return (struct mpgc_config){ port };
+	return (struct mpgc_config){ port, daemon, kill };
 }
