@@ -22,13 +22,27 @@
 
 #include <stdio.h>
 
+/* string identifying lines logged by the mpgc daemon */
+#define MPGC_IDENT "MPGC"
+/* the mpgc root */
+#define MPGC_ROOT "/tmp"
+
 struct mpgc_config optionParse(int argc, const char *argv[]) {
+	const char * root = MPGC_ROOT;
+	const char * log_ident = MPGC_IDENT;
 	int port = 8080;
 
 	poptContext context;
 
 	struct poptOption optionsTable[] = {
-		{ "port", 'p', POPT_ARG_INT, &port, 0, "server port", NULL },
+		{ "root", 'r', POPT_ARG_INT, &root, 0,
+			"root directory", NULL },
+
+		{ "ident", 'i', POPT_ARG_STRING, &log_ident, 0,
+			"logifile identification", NULL },
+
+		{ "port", 'p', POPT_ARG_STRING, &port, 0,
+			"server port", NULL },
 
 		POPT_AUTOHELP POPT_TABLEEND
 	};
@@ -40,5 +54,5 @@ struct mpgc_config optionParse(int argc, const char *argv[]) {
 
 	poptFreeContext(context);
 
-	return (struct mpgc_config){ port };
+	return (struct mpgc_config){ root, log_ident, port };
 }

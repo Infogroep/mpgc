@@ -21,6 +21,8 @@
 #include <popt.h>
 
 struct mpgc_config {
+	const char * root;
+	const char * log_ident;
 	int port;
 };
 

@@ -117,10 +117,8 @@ static const char * random_bye(void) {
 #include <syslog.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#define MPGC_IDENT "MPGC"
-#define MPGC_ROOT "/"
 
-static void become_daemon(void) {
+static inline void become_daemon(struct mpgc_config config) {
 	/* process and session ID's*/
 	pid_t pid, sid;
 
@@ -129,29 +127,34 @@ static void become_daemon(void) {
 	if (pid > 0) { exit(EXIT_SUCCESS); }
 
 	/* now in child process */
-	openlog(MPGC_IDENT, LOG_CONS | LOG_PID, LOG_DAEMON);
+	openlog(config.log_ident, LOG_CONS | LOG_PID, LOG_DAEMON);
 
 	umask(0);	
 	mpgc_err_check(-1, sid = setsid(), MPGC_MAIN_SETSID);
-	mpgc_err_check(-1, chdir(MPGC_ROOT), MPGC_MAIN_ROOT);
+	mpgc_err_check(-1, chdir(config.root), MPGC_MAIN_ROOT);
 
 	fclose(stdin);
 	fclose(stdout);
 	fclose(stderr);
-
-	/* we are now a daemon */
-	syslog(LOG_INFO, random_hello());
 }
+
+#define MPGC_VERSION_MAJOR 0
+#define MPGC_VERSION_MINOR 1
 
 int main(int argc, const char *argv[]) {
 	struct mpgc_config config;
 	struct mpgc_server * server;
 
 	config = optionParse(argc, argv);
+
+	printf("MPGC Server Daemon v%d.%d\n", MPGC_VERSION_MAJOR, MPGC_VERSION_MINOR);
+	printf("root: %s\n", config.root);
 	printf("port: %d\n", config.port);
 	
-	// daemonize this process
-	become_daemon();
+	become_daemon(config);
+
+	/* we are now a daemon */
+	syslog(LOG_INFO, random_hello());
 
 	server = start_server(config.port);
 
